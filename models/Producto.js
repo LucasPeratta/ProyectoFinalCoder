@@ -19,9 +19,9 @@ class Producto {
     let productos = await this.getAll();
     let producto = productos.filter((o) => o.id == id);
     if (producto.length == 0) {
-      throw new Error`No se puede obtener el producto con el id: ${id}`();
+      throw new Error(`No se puede obtener el producto con el id: ${id}`);
     }
-    return producto;
+    return producto[0];
   }
 
   async save(producto) {
