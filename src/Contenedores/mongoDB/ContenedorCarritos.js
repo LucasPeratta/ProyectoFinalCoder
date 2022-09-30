@@ -21,17 +21,17 @@ class ContenedorCarrito {
   }
 
   async addProduct(idCarrito, idProduct) {
-    // console.log(idCarrito, idProduct);
-    return await this.schema.updateOne(
+    console.log(idCarrito, idProduct);
+    return await this.coleccion.updateOne(
       { _id: idCarrito },
-      { productos: idProduct }
+      { $push: { productos: idProduct } }
     );
   }
 
   async deleteIdProduct(idCarrito, idProduct) {
-    return await this.schema.updateOne(
+    return await this.coleccion.updateOne(
       { _id: idCarrito },
-      { $pull: { _id: idProduct } }
+      { $pull: { productos: idProduct } }
     );
   }
 }
