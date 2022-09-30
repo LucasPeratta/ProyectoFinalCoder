@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  carritosGetALL,
   carritoGetProductsById,
   carritosSave,
   carritoDeleteByid,
@@ -10,7 +9,6 @@ const {
   carritoDeleteProduct,
 } = require("../controllers/carritoControllers");
 
-// router.get("/", carritosGetALL);
 router.get("/:id/productos", carritoGetProductsById);
 router.post("/", carritosSave);
 router.post("/:id/productos", carritoSaveByIdProduct);

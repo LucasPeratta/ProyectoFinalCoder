@@ -3,19 +3,10 @@ const { promises: fs } = require("fs");
 const Producto = require("./Producto");
 const producto = new Producto("./models/productos.txt");
 
-class Carrito {
+class ContenedorCarrito {
   id = 1;
   constructor(ruta) {
     this.ruta = ruta;
-  }
-
-  async getAll() {
-    try {
-      const carritos = await fs.readFile(this.ruta, { encoding: "utf-8" });
-      return JSON.parse(carritos);
-    } catch (e) {
-      return [];
-    }
   }
 
   async getById(id) {
@@ -106,4 +97,4 @@ class Carrito {
   }
 }
 
-module.exports = Carrito;
+module.exports = ContenedorCarrito;

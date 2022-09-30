@@ -1,6 +1,6 @@
 const { promises: fs } = require("fs");
 
-class Producto {
+class ContenedorProductos {
   id = 1;
   constructor(ruta) {
     this.ruta = ruta;
@@ -76,4 +76,4 @@ class Producto {
   }
 }
 
-module.exports = Producto;
+module.exports = ContenedorProductos;

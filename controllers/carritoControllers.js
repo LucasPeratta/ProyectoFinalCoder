@@ -1,14 +1,4 @@
-const Carrito = require("../models/Carrito");
-const carritos = new Carrito("./models/carritos.txt");
-
-const carritosGetALL = (req, res) => {
-  carritos
-    .getAll()
-    .then((carritos) => res.json(carritos))
-    .catch((error) => {
-      res.json([]);
-    });
-};
+const { carritos } = require("../src/daos/carritos/index.js");
 
 const carritoGetProductsById = ({ params }, res) => {
   const id = params.id;
@@ -74,7 +64,6 @@ const carritoDeleteProduct = async (req, res) => {
 };
 
 module.exports = {
-  carritosGetALL,
   carritoGetProductsById,
   carritosSave,
   carritoDeleteByid,

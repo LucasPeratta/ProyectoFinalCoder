@@ -1,8 +1,7 @@
-const Producto = require("../models/Producto");
-const producto = new Producto("./models/productos.txt");
+const { productosDao } = require("../src/daos/productos/index.js");
 
 const productosGetAll = (req, res) => {
-  producto
+  productosDao
     .getAll()
     .then((objetos) => res.json(objetos))
     .catch((error) => res.json([]));
@@ -10,7 +9,7 @@ const productosGetAll = (req, res) => {
 
 const productosGetById = ({ params }, res) => {
   const id = params.id;
-  producto
+  productosDao
     .getById(id)
     .then((obj) => {
       res.json(obj);
@@ -21,7 +20,7 @@ const productosGetById = ({ params }, res) => {
 };
 
 const productosSave = (req, res) => {
-  producto
+  productosDao
     .save(req.body)
     .then((oj) => {
       res.send({ msg: "El producto ha sido creado" });
@@ -32,7 +31,7 @@ const productosSave = (req, res) => {
 };
 
 const productoEdit = (req, res) => {
-  producto
+  productosDao
     .edit(req.params.id, req.body)
     .then(() => {
       res.send({ msg: "producto modificado con exito" });
@@ -44,7 +43,7 @@ const productoEdit = (req, res) => {
 
 const productoDelete = ({ params }, res) => {
   const id = params.id;
-  producto
+  productosDao
     .deleteById(id)
     .then(() => {
       res.send({ msg: "Producto eliminado con exito" });
